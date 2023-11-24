@@ -311,3 +311,34 @@ it gives us referenceError.
 * There are three types of error: [1] referenceError {given where variable does not have memory allocation} [2] typeError {given when we change type that is not supposed to be changed} [3] syntaxError {when proper syntax(way of writing a statement) is not used}.
 * Use const wherever possible followed by let, Use var as little as possible(only if you have to). It helps avoid error.
 * Initialising variables at the top is good idea, helps shrinks TDZ to zero.
+
+> Block scope & shadowing?
+* Code inside curly bracket is called block.
+* Multiple statements are grouped inside a block so it can be written where JS expects single statements like in if, else, loop, function etc.
+* Block values are stored inside separate memory than global. They are stored in block. (the reason let and const are called block scope)
+```javascript
+var a = 100
+{
+    var a = 10
+    console.log(a); // 10
+}
+console.log(a); // 10
+
+let a = 100
+{
+    let a = 10
+    console.log(a); // 10
+}
+console.log(a); // 100
+
+
+// Illegal shadowing
+let a = 200;
+{
+ var a =20;
+}
+
+// As 'var' declaration goes to 'Global environment' and sets in Memory context, it cannot be set using 'Block environment' value 
+// Hence: Uncaught SyntaxError: Identifier 'a' has already been declared
+```
+* Providing same name to the variable as of those variable which are present in outer scope is called shadowing.

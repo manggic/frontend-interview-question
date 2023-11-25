@@ -408,3 +408,13 @@ Examples of JavaScript Engines:
 * SpiderMonkey (Used in Firefox)
 * JavaScriptCore (Used in Safari):
 * Chakra (Previously used in Microsoft Edge):
+
+> Expain trust issue with setTimeout ?
+* setTimeout of an ‘n’ seconds does not guarantee execution exactly when ‘n’ seconds have passed, rather it guarantees a minimum delay of ‘n’. This is because after a defined limit, the callback function moves to the callback queue (stating ready for execution) where the event loop is supposed to pick it for actual execution.
+* The setTimeout function is executed only after call stack is empty, even if setTimeout is set to 0ms. 
+* setTimeout ensures that minimum it will take the time mentioned because it may be paused due to call stack not empty.
+
+> Higher order function ?
+* A function which takes fn as an arguments or return a fn is called HOF
+* fn which is passed to the HOF is callback function
+* This is only possible because fn are first class citizens

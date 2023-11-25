@@ -342,3 +342,54 @@ let a = 200;
 // Hence: Uncaught SyntaxError: Identifier 'a' has already been declared
 ```
 * Providing same name to the variable as of those variable which are present in outer scope is called shadowing.
+
+> What is Function Expression ?
+* When we assign a function into a variable that is Function Expression. & We can not do Hoisting by this becz it acts like variable.
+```javascript
+var a = function(){
+           console.log("Function Expression");
+      }
+```
+
+> Difference b/w Parameters and Arguments ?
+* When we creating a function  & put some variabels in this ( ) that is our Parameters & When we call this function & pass a variable in this ( ) that is our Arguments
+
+```javascript
+function ab( param1, param2 ){} // param1 , param2 are parameters
+
+ab(4, 5) // 4 & 5 are arguments
+```
+
+> What is First Class Function Or First class citizens?
+* They are called first class citizens or first class functions because they have the ability to be stored in the variables, passed as parameters and arguments. They can also be returned in the function.
+
+> what is callback function?
+* Function that is passed on as argument to another function is called callback function.
+* setTimeout helps turn JS which is single threaded and synchronous into asynchronous.
+
+> Explain callback queue,call stack , micro-task queue, Starvation and Event Loop in details ?
+* Call Stack : The call stack is a data structure that keeps track of the execution context of the program.
+It stores function calls and executes them in a last-in, first-out (LIFO) manner.
+* Event loop : The event loop is a continuous process and a mechanism through which the ‘calls waiting for execution’ in the callback queue/job queue can be put on the call stack.
+For any event from the callback queue/job queue to come to call stack, the call stack will have to be empty.
+* Microtask Queue: Microtasks are tasks with higher priority that need to be executed before the next macrotask.
+Examples include promises (Promise.then(), async/await), mutation observer callbacks, and process.nextTick in Node.js.
+* Callback Queue: The callback queue holds callback functions from asynchronous operations, such as setTimeout or event handlers.
+When an asynchronous operation completes, its callback is added to the callback queue.
+* Starvation: Microtask starvation occurs when the Microtask Queue is heavily populated with tasks, causing delays in the execution of other important tasks, particularly macrotasks. This can have implications for the overall responsiveness of the application.
+* Execution Flow: Synchronous code is executed and added to the call stack.
+When an asynchronous operation, like setTimeout, completes, its callback is placed in the Callback Queue or the Microtask Queue, depending on the type of task.
+The event loop continually checks the Microtask Queue and Macrotask Queue for tasks.
+If the Microtask Queue is not empty, all microtasks are executed before moving to macrotasks.
+This ensures quick and high-priority execution of certain tasks.
+If the Microtask Queue is empty, the event loop moves to the Macrotask Queue and executes the next macrotask.
+The process repeats, with the event loop checking and executing tasks from the Microtask Queue and Macrotask Queue.
+Microtasks have higher priority than macrotasks.
+Excessive use of microtasks may delay the execution of macrotasks, potentially affecting application responsiveness.
+ 
+
+* JS is single threaded. It has only one call stack.
+* Execution of code in javascript is always line by line.
+* Code in javascript is executed by JS Engine which uses the call stack to determine the order of execution.
+![event loop](images/event-loop.png)
+* [event loop explaination url](https://www.scaler.com/topics/javascript/event-loop-in-javascript/)

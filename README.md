@@ -1,5 +1,92 @@
 ## Frontend Interview Question
 
+### javascript
+
+- let vs. const vs. var
+- Currying, partial application
+- How ‘this’ value is determined
+- Callbacks, Promises, Async/Await
+- Event Loop & Concurrency Model
+- ES7, ES8, and beyond: JS’s new features
+- JS Design Patterns: Writing efficient code
+- Prototypes: Concept and relation to Objects
+- DOM manipulation, event handling: Vanilla JS
+- Array, string manipulation: Common techniques
+- Arrow functions, Template literals, Destructuring
+- Higher-order Functions in functional programming
+- JS bundlers: Role in optimizing code for production
+- Hoisting: Impact on variable and function declarations
+- Throttling, Debouncing: Controlling function execution rate
+- Unit testing: Popular frameworks like Jest or Mocha
+- Web APIs: Importance and working with them in JS
+- Data structures: Linked lists, stacks, queues in JS
+- Caching, Memoization: Performance Techniques
+- Security best practices: XSS, CSRF protection
+- ES modules: Role in modern JS development
+- Functional vs. Class Components in React
+- == vs. ===: JavaScript value comparison
+- Prototypal vs. Classical Inheritance
+- Practical applications of Closures
+- Error handling: try...catch blocks
+- Scope chain, Lexical Scoping
+- map, filter, reduce, forEach
+
+### React
+- Explain Flux.
+- references in React
+- synthetic events in React
+- Real DOM vs Virtual DOM
+- React router & advantages
+- Redux different from Flux?
+- How arrow function is used
+- Why can’t browsers read JSX
+- significance of Store in Redux
+- concept of a Context in React
+- server-side & client-side rendering
+- handle asynchronous data loading
+- concept of a Virtual DOM in React
+- three principles that Redux follows
+- Higher Order Components and usage
+- major problems with MVC framework
+- handle security in a React application
+- React’s ES6 syntax vs compared to ES5
+- handle optimization in a large application
+- embed two or more components into one
+- “In React, everything is a component.” Explain
+- different phases of React component’s lifecycle
+- track the unmounting of a functional component
+
+### common 
+- What is difference between sync and async 
+- setTimeout and setInterval 
+- What is unmount process on the react hook 
+- How to optimise the react application,
+- Higher order function and call function 
+- Promise 
+- Clouser 
+- Let and var 
+- Call and bind 
+- Swallow copy and deep copy 
+- Mongodb we can create collection in existing database 
+- Agregation and what will do - mongodb 
+- Git fetch and git pull - git
+- What is rebase - git
+- Use callback and useMemo 
+- Higher order component 
+- Use ref
+- Node js even driven 
+- Authentication code flow 
+- What is type module are used in node js 
+- Fs module 
+- Redux code flow
+- Grid and flex
+- Postion absolute and fixed
+- Redux saga
+- And why are using redux saga and there code flow 
+- What kind of hook are used 
+- What kind of http request are used
+- What is difference between put and patch 
+
 > <strong> Explain Higher Order Component ?</strong>
 
 *  A Higher Order Component (HOC) in React is a function that takes a component and returns a new component with enhanced features or behavior. 

@@ -379,7 +379,15 @@ explaination -
 * The mechanism mentioned above is called SCOPE CHAIN.
 * If the variable accessed is not found in the Scope Chain, then you will get the variable is not defined error in the  browser's console.
 
-> let and const hoisting? Temporary Dead zone?
+> let and const? their hoisting? Temporary Dead zone?
+* Scoping
+   - var is function-scoped, meaning the variable is visible throughout the entire function where it is declared.
+   - If a var is declared within a block (like an if statement or loop), it is still visible outside of that block.
+   - Both let and const are block-scoped, which means they are only accessible within the block (enclosed by {}) where they are defined.
+* Hoisting
+   - Variables declared with var are hoisted to the top of their scope during the compilation phase.
+   - var declarations are initialized with undefined by default.
+   - let and const declarations are not automatically initialized. If you try to use them before assignment, you get a ReferenceError.  
 * let and const are hoisted but its memory is allocated at other place than window which cannot be accessed before initialisation.
 * Thats phase from hoisting a variable till it assigns a value is called temporary dead zone.
 ```javascript
@@ -505,3 +513,123 @@ Examples of JavaScript Engines:
 * A function which takes fn as an arguments or return a fn is called HOF
 * fn which is passed to the HOF is callback function
 * This is only possible because fn are first class citizens
+
+> what is 'this' keyword?
+* In JavaScript, the this keyword is a special keyword that refers to the current instance of an object or the context in which a function is executed. The value of this depends on how a function is called or how an object is accessed.
+
+1. Global Context:
+* In the global context (outside of any function or object), this refers to the global object, which is window in a browser or global in Node.js.
+```javascript
+console.log(this); // refers to the global object (e.g., window in a browser)
+
+```
+2. Function Context:
+* When used in a regular function (not an arrow function), this refers to the object that called the function. If the function is not called as a method of an object, this might refer to the global object.
+```javascript
+function exampleFunction() {
+  console.log(this);
+}
+
+exampleFunction(); // refers to the global object (e.g., window in a browser)
+
+```
+3. Method Context:
+* When a function is a method of an object, this refers to the object that owns the method.
+```javascript
+const obj = {
+  method: function() {
+    console.log(this);
+  }
+};
+
+obj.method(); // refers to the 'obj' object
+
+```
+
+4. Constructor Context:
+* Inside a constructor function (used with the new keyword to create objects), this refers to the newly created instance.
+```javascript
+function Example() {
+  this.property = 'value';
+}
+
+const instance = new Example();
+console.log(instance.property); // 'value'
+```
+
+5. Event Handlers:
+* In event handlers, such as those used in the DOM, this often refers to the element that triggered the event.
+```javascript
+<button onclick="console.log(this)">Click me</button>
+```
+
+6. Arrow Functions:
+* Arrow functions do not have their own this context; instead, they inherit the 'this' value from the enclosing lexical scope.
+
+> Diff between regular function and arrow fn ?
+* 'this' Binding:
+   
+   - regular fn has it own this context, dynamically bound at runtime based on how the function is invoked.
+   - The value of this can change depending on the calling context.
+   - arrow fn inherits this from the enclosing lexical scope.
+
+* 'new' keyword:   
+
+   - regular fn can be used as a constructor function with the new keyword to create instances.
+   - arrow fn cannot be used as a constructor; using new with an arrow function will result in an error.
+
+* Arguments Object:
+
+   - reg fn has access to the arguments object, which is an array-like object containing all the arguments passed to the function.
+   - arrow fn does not have its own arguments object. If you need to access arguments, you can use the rest parameters syntax (...args).
+
+* 'prototype' property:
+ 
+   - Regular fn has a prototype property that can be used for prototype-based inheritance.
+   - Arrow fn does not have its own prototype property. It cannot be used as a constructor, so it doesn't create objects with a prototype.
+
+```javascript
+// Constructor function
+function Person(name) {
+  this.name = name;
+}
+
+// Adding a method to the prototype
+Person.prototype.sayHello = function() {
+  console.log(`Hello, my name is ${this.name}`);
+};
+
+// Creating an instance
+const person1 = new Person('Alice');
+
+// Accessing the method from the prototype
+person1.sayHello(); // Output: Hello, my name is Alice
+```   
+
+> what is prototype in js?
+* Every function in JavaScript has a special property called prototype.
+* This prototype property is initially an empty object.
+* When you use a function as a constructor with the new keyword, the object created inherits properties and methods from the constructor's prototype.
+* This allows you to define methods that are shared among all instances created with that constructor.
+
+```javascript
+// Constructor function
+function Vehicle(make, model) {
+  this.make = make;
+  this.model = model;
+}
+
+// Adding a method to the prototype
+Vehicle.prototype.start = function() {
+  console.log(`${this.make} ${this.model} is starting.`);
+};
+
+// Creating instances
+const car1 = new Vehicle('Toyota', 'Camry');
+const car2 = new Vehicle('Honda', 'Accord');
+
+// Using the shared method from the prototype
+car1.start(); // Output: Toyota Camry is starting.
+car2.start(); // Output: Honda Accord is starting.
+
+```

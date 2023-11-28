@@ -633,3 +633,134 @@ car1.start(); // Output: Toyota Camry is starting.
 car2.start(); // Output: Honda Accord is starting.
 
 ```
+
+> Template literals ?
+* Template literals are a feature in JavaScript that allows you to embed expressions inside string literals, making it easier to concatenate variables and create more readable and flexible strings. Template literals are created using backticks ( ) instead of single or double quotes.
+
+
+> what is Js bundler ?
+* A JavaScript bundler is a tool that combines and packages multiple JavaScript files (and potentially other assets like CSS, images, etc.) into a single, optimized file or a set of files.
+The main purpose of a bundler is to improve the performance and efficiency of web applications by reducing the number of HTTP requests and optimizing the delivery of code to the browser.
+
+1. File Dependency Resolution: Bundlers analyze the dependencies between different JavaScript files. They create a dependency graph, which represents the relationships between various modules or files in the project.
+
+2. Code Transformation: Bundlers often apply transformations to the code during the bundling process. For example, they can use transpilers like Babel to convert modern JavaScript (ES6+ syntax) into an older version that is compatible with a wider range of browsers.
+
+3. Tree Shaking: Tree shaking is a technique used by bundlers to remove dead (unused) code from the final bundle. It helps in keeping the bundle size small by excluding code that is not referenced or executed.
+
+4. Code Splitting: Code splitting involves breaking the bundled code into smaller, more manageable chunks. This is particularly useful for large applications, as it allows for more efficient loading of only the necessary code when it's needed, improving initial page load times.
+
+5. Minification:Bundlers often minify the code by removing unnecessary characters such as whitespace and comments, and by shortening variable and function names. This reduces the size of the final bundle, improving download and parsing times.
+
+6. Asset Handling: In addition to JavaScript files, bundlers can handle other types of assets, such as CSS, images, and fonts. They may also optimize and bundle these assets for better performance.
+
+7. Dynamic Imports: Modern bundlers support dynamic imports, allowing developers to load modules on-demand, improving the application's performance by loading only the required modules when necessary.
+
+Popular JavaScript bundlers include:
+
+* Webpack: A widely-used bundler with a powerful plugin system that supports code splitting, hot module replacement, and more.
+
+* Parcel: A zero-config bundler that aims to be fast and easy to use, supporting various asset types out of the box.
+
+* Rollup: Known for its focus on creating smaller bundles and optimizing for ES6 module syntax.
+
+> what is babel ?
+* Babel is a popular JavaScript compiler that allows developers to write code using the latest ECMAScript (ES) standards (such as ES6 or ES2015 and beyond) and then transform, or transpile, that code into an older version of JavaScript that is compatible with a broader range of browsers. This process is essential for ensuring that web applications can run on environments that may not support the latest JavaScript features.
+
+> what is hot module replacement ?
+* Hot Module Replacement (HMR) is a feature in some JavaScript bundlers, build tools, and frameworks that allows developers to apply code updates and see the results in real-time, without requiring a full page reload.
+
+> Throttling and Debouncing ?
+* Throttling and debouncing are techniques used in JavaScript to control the rate at which a particular function is executed, especially in scenarios where rapid or frequent execution can cause performance issues or unnecessary resource consumption.
+
+* Throttling: It ensure that their is a specified time interval between same function call.
+Throttling ensures a function is executed at a regular interval.
+In throttling, if a function is called more frequently than the specified interval, some calls are ignored.
+
+    * Function Execution: 
+
+      * If the function is called, it will execute immediately.
+      * If the function is called again within a specified time interval, the second call is ignored.
+      * After the time interval has passed since the last function execution, the function can be called again.
+
+    * Use Cases:
+
+      * User interface interactions like scrolling and resizing events. 
+      * Preventing a function from being called too frequently in response to some event.
+
+```javascript
+// Throttle function definition
+function throttle(func, delay) {
+  // Initialize variable to keep track of the last function execution timestamp
+  let lastCallTime = 0;
+
+  // Return a throttled version of the original function
+  return function (...args) {
+    // Get the current timestamp when the throttled function is invoked
+    const currentTime = new Date().getTime();
+
+    // Check if the time elapsed since the last function call is greater than or equal to the specified delay
+    if (currentTime - lastCallTime >= delay) {
+      // If true, execute the original function with the provided arguments
+      func.apply(this, args);
+
+      // Update the last call timestamp to the current time
+      lastCallTime = currentTime;
+    }
+  };
+}
+
+// Example usage: Create a throttled function that logs "Function executed!" with a delay of 1000 milliseconds
+const throttledFunction = throttle(() => {
+  console.log("Function executed!");
+}, 1000);
+
+// Attach the throttled function as an event handler for the window's scroll event
+window.addEventListener("scroll", throttledFunction);
+
+```
+
+* Debouncing: Debouncing is a technique that ensures that a function is not executed until a certain amount of time has passed since the last time it was invoked.
+Debouncing delays the execution of a function until there's a pause in its invocation.
+In debouncing, if a function is called frequently, it will only execute after a pause in the calls.
+
+    * Function Execution:
+
+       * If the function is called, it won't execute immediately.
+       * If the function is called again within a specified time interval, the timer is reset.
+       * After the time interval has passed without any further calls, the function is executed.
+
+    * Use Cases:
+
+       * Input field events (e.g., keyup, input) to delay API requests until the user has stopped typing.
+       * Window resize events to delay the execution of a function until the user has finished resizing.
+
+```javascript
+// Debounce function definition
+function debounce(func, delay) {
+  // Initialize a variable to store the timeout ID
+  let timeoutId;
+
+  // Return a debounced version of the original function
+  return function (...args) {
+    // Clear the existing timeout to restart the countdown
+    clearTimeout(timeoutId);
+
+    // Set a new timeout for the specified delay
+    timeoutId = setTimeout(() => {
+      // Execute the original function with the provided arguments after the delay
+      func.apply(this, args);
+    }, delay);
+  };
+}
+
+// Example usage: Create a debounced function that logs "Function executed!" with a delay of 1000 milliseconds
+const debouncedFunction = debounce(() => {
+  console.log("Function executed!");
+}, 1000);
+
+// Attach the debounced function as an event handler for the window's resize event
+window.addEventListener("resize", debouncedFunction);
+
+```
+        

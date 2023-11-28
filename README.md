@@ -764,3 +764,126 @@ window.addEventListener("resize", debouncedFunction);
 
 ```
         
+> Explain call, apply and bind ?
+* In JavaScript, call, apply, and bind are methods that allow you to set the value of this and pass arguments to a function in different ways.
+
+1. 'call' Method:
+```javascript
+
+// In this example, the call method is used to borrow the fullName method from person1 and execute it in the context of person2. This allows person2 to use a method defined on person1 without having the method explicitly defined on itself.
+
+
+const person1 = {
+  firstName: 'John',
+  lastName: 'Doe',
+  fullName: function () {
+    return this.firstName + ' ' + this.lastName;
+  },
+};
+
+const person2 = {
+  firstName: 'Jane',
+  lastName: 'Doe',
+};
+
+// Using call to borrow the fullName method from person1 for person2
+const janeFullName = person1.fullName.call(person2);
+
+console.log(janeFullName); // Output: Jane Doe
+
+```
+
+```javascript
+// Here, the call method is employed to invoke the greet function with a specific this value (user). This allows the function to access the name property of the user object.
+
+function greet(message) {
+  console.log(`${message}, ${this.name}!`);
+}
+
+const user = {
+  name: 'Alice',
+};
+
+// Using call to set the 'this' value for the greet function
+greet.call(user, 'Hello');
+
+// Output: Hello, Alice!
+
+```
+
+2. 'apply' Method
+* Similar to call, the apply method is used to invoke a function with a specified this value, but it takes an array or an array-like object as the second argument, which represents the arguments to be passed to the function.
+
+```javascript
+// In this example, the apply method is utilized to invoke the fullName method of the person object with a specific this value (user). The second argument is an array ['Hello'], which is passed as the argument to the fullName function.
+
+const person = {
+  fullName: function (greeting) {
+    return `${greeting}, ${this.firstName} ${this.lastName}`;
+  },
+};
+
+const user = {
+  firstName: 'John',
+  lastName: 'Doe',
+};
+
+// Using apply to set the 'this' value for the fullName function
+const greetingMessage = person.fullName.apply(user, ['Hello']);
+
+console.log(greetingMessage); // Output: Hello, John Doe
+
+```
+
+```javascript
+// Here, the apply method is employed to apply the sumValues function to the array values. The elements of the array are used as arguments for the function.
+
+function sumValues(a, b, c) {
+  return a + b + c;
+}
+
+const values = [2, 4, 6];
+
+// Using apply to apply the sumValues function to an array of values
+const result = sumValues.apply(null, values);
+
+console.log(result); // Output: 12
+
+```
+
+3. 'bind' method
+* bind allows you to set both the 'this' value and some initial arguments for a function, creating a new function with these fixed properties.
+
+```javascript
+
+// In this example, bind creates a new function greetBob based on the greet function. When greetBob is invoked, it acts as if it were greet with this set to null (global object) and the argument 'Bob' fixed.
+
+function greet(name) {
+  console.log(`Hello, ${name}!`);
+}
+
+// Using bind to create a new function with a specific context (this value)
+const greetBob = greet.bind(null, 'Bob');
+
+// Invoking the new function
+greetBob(); // Output: Hello, Bob!
+
+```
+
+```javascript
+// Here, bind is used to create a new function greetPerson based on the greet method of the person object. The new function, when invoked, has its 'this' value set to the person object, allowing it to access the name property.
+
+const person = {
+  name: 'Alice',
+  greet: function () {
+    console.log(`Hello, ${this.name}!`);
+  },
+};
+
+// Using bind to create a new function with a specific context (this value)
+const greetPerson = person.greet.bind(person);
+
+// Invoking the new function
+greetPerson(); // Output: Hello, Alice!
+
+```

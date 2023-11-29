@@ -887,3 +887,60 @@ const greetPerson = person.greet.bind(person);
 greetPerson(); // Output: Hello, Alice!
 
 ```
+
+> Types of modules ?
+* ECMAScript Modules (ESM):
+
+   * Syntax:
+
+      1. Importing: Use the import keyword.
+      2. Exporting: Use the export keyword.
+      ```javascript
+      // Example of ESM syntax
+      // File: myModule.js
+      export const myVariable = 'Hello, World!';
+      ``` 
+
+   * Use Cases:
+
+       1. Modern JavaScript Environments: ESM is the standardized module system in ECMAScript, suitable for modern JavaScript environments.
+       2. Browser-Side Code: It's used for client-side code in modern browsers.
+       3. Node.js (with "type": "module"): In Node.js, ESM can be used by specifying "type": "module" in the package.json file or using the .mjs file extension.
+       ```
+       // Example package.json for ESM
+       {
+         "type": "module"
+       }
+       ```
+   * Dynamic Import: ESM supports dynamic imports with the import() syntax.
+       ```javascript
+       const myModule = await import('./myModule.js');
+       ```    
+
+* CommonJS Modules:
+
+  * Syntax:
+
+     1. Importing: Use the require function.
+     2. Exporting: Use the module.exports or exports object.
+     ```javascript
+     // Example of CommonJS syntax
+     // File: myModule.js
+     const myVariable = 'Hello, World!';
+     module.exports = myVariable;
+     ``` 
+
+  * Use Cases:
+
+     1. Node.js (Default): CommonJS is the default module system in Node.js.  
+     2. Server-Side Code: It's widely used for server-side code and server-side JavaScript applications.
+     3. Node.js (with "type": "commonjs"): In Node.js, if you want to explicitly use CommonJS for .js files, you can specify "type": "commonjs" in the package.json.
+
+     ```javascript
+     // Example package.json for CommonJS
+     {
+       "type": "commonjs"
+     }
+     ```
+  * Synchronous Loading: CommonJS modules are loaded synchronously by default. Asynchronous loading can be achieved using callbacks.
+

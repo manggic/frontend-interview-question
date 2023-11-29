@@ -944,3 +944,119 @@ greetPerson(); // Output: Hello, Alice!
      ```
   * Synchronous Loading: CommonJS modules are loaded synchronously by default. Asynchronous loading can be achieved using callbacks.
 
+
+> How does CORS (Cross-Origin Resource Sharing) work?
+* Cross-Origin Resource Sharing (CORS) is a security feature implemented by web browsers that controls how web pages in one domain can request and interact with resources from another domain.
+* CORS is enforced by web browsers to prevent malicious websites from making unauthorized requests to a different domain.
+
+> How to fix CORS error ?
+* To fix CORS (Cross-Origin Resource Sharing) errors, you generally need to make changes on the server that is providing the resource. 
+* The server needs to include the Access-Control-Allow-Origin header in its responses. This header specifies which origins are allowed to access the resource.
+```http
+Access-Control-Allow-Origin: https://yourdomain.com
+```
+* If you want to allow any origin, you can use the wildcard *
+```http
+Access-Control-Allow-Origin: *
+```
+* Allow other Header
+```http
+Access-Control-Allow-Methods: GET, POST, PUT, DELETE
+Access-Control-Allow-Headers: Content-Type, Authorization
+Access-Control-Allow-Credentials: true
+``` 
+* There may be middleware available to handle CORS. For example, in Node.js with Express, you can use the library cors
+
+
+> How does the event delegation pattern work?
+* Event delegation is a programming pattern in which a single event listener is attached to a common ancestor of multiple elements, rather than attaching individual event listeners to each element. This pattern leverages the concept of event bubbling in the Document Object Model (DOM) to handle events more efficiently.
+
+```javascript
+const commonAncestor = document.getElementById('commonAncestor');
+
+commonAncestor.addEventListener('click', function (event) {
+  // Handle the event based on the target element
+  const targetElement = event.target;
+  if (targetElement.classList.contains('specificClass')) {
+    // Do something specific for elements with a certain class
+    console.log('Element clicked with specific class');
+  }
+});
+```
+
+> How can you optimize website performance?
+
+> What is the role of the `use strict` directive?
+* The "use strict"; directive is used in JavaScript to enable a stricter set of parsing and error handling rules. When this directive is present at the beginning of a script or a function, it enforces a more rigid interpretation of the code, helping to catch common programming errors and prevent the use of certain error-prone features.
+* Variables must be declared with var, let, or const before they are used.
+* Assigning a value to an undeclared variable, deleting variables, or assigning values to read-only properties will result in errors.
+
+
+> Differentiate between shallow and deep copying objects.
+* Shallow Copy:
+
+    * A shallow copy creates a new object and copies the values of the properties of the original object to the new object.
+    * If the properties of the original object are objects themselves (nested objects), the references to those nested objects are copied, not the objects themselves.
+    ```javascript
+    // Original object with a top-level property 'a' and a nested object 'b'
+    const originalObject = { a: 1, b: { c: 2 } };
+
+    // Shallow copy using spread operator
+    const shallowCopy = { ...originalObject };
+
+    // Modify the top-level property 'a' in the shallow copy
+    shallowCopy.a = 99;
+
+    // Modify the nested property 'b.c' in the shallow copy
+    shallowCopy.b.c = 88;
+
+    // Output the original object and the shallow copy
+    console.log("Original Object:", originalObject); // { a: 1, b: { c: 88 } }
+    console.log("Shallow Copy:", shallowCopy);      // { a: 99, b: { c: 88 } }
+
+
+    // Modifying the top-level property a in the shallow copy does not affect the original object.
+    // Modifying the nested property b.c in the shallow copy affects both the shallow copy and the original object because they share a reference to the same nested object.
+    ```
+* Deep Copy:
+
+    * A deep copy creates a new object and recursively copies all the properties of the original object, including nested objects.
+    * The result is a completely independent copy where changes to one object do not affect the other.
+    ```javascript
+    const _ = require('lodash');
+
+    const originalObject = {
+      name: 'John',
+      age: 25,
+      address: {
+        city: 'New York',
+        country: 'USA'
+      }
+    };
+
+    // Deep copy using Lodash
+    const deepCopyWithLodash = _.cloneDeep(originalObject);
+
+    // Modify the deep copy
+    deepCopyWithLodash.name = 'Jane';
+    deepCopyWithLodash.address.city = 'San Francisco';
+    
+    // Output the original object and the deep copy using Lodash
+    console.log("Original Object:", originalObject);
+    console.log("Deep Copy with Lodash:", deepCopyWithLodash);
+    ```
+
+> How can you handle cross-browser compatibility issues?
+
+> How does the prototype chain work in JavaScript?
+
+> Describe the differences between REST and GraphQL.
+
+> How can you optimize images for the web?
+
+>  Explain the purpose of the `defer` attribute in script tags.
+
+> Describe the differences between CSS Grid and Flexbox.
+
+> Explain the purpose of the `Intersection Observer` API.
+

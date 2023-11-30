@@ -1105,14 +1105,51 @@ Utilize lazy loading for images below the fold, ensuring that they only load as 
 * Use WebP Format (if supported):WebP is a modern image format that provides good compression without sacrificing quality. Check if your target audience's browsers support WebP.
 
 > Explain the purpose of the `defer` attribute in script tags.
+* The defer attribute in script tags is used to indicate that the script should be executed after the HTML document has been fully parsed. When a browser encounters a script tag with the defer attribute, it will continue to parse the HTML document while the script is being downloaded in the background
+* JS with defer in `<head>`:
+ 
+   * What happens: The script is loaded in the background while HTML is parsed, and it's executed in order after parsing is complete but before the DOMContentLoaded event.
+   * Good for: Scripts that need to maintain order of execution and require access to a fully parsed DOM.
+   ```html
+   <head>
+    <script defer src="myscript.js"></script>
+   </head>
+
+   ```
+
+* JS just before `</body>`:
+
+   * What happens: The script is loaded in the background and executed after HTML parsing is complete, but it won't block rendering.
+   * Good for: Faster initial page load times, especially for larger scripts that don't require immediate execution.
+   ```html
+   <body>
+    <!-- Other HTML content -->
+    <script defer src="myscript.js"></script>
+   </body>
+   ```
+
+* In essence, defer in `<head>` is about control and order, while just before `</body>` is about speed and non-blocking.
 
 > Describe the differences between CSS Grid and Flexbox.
 
 > Explain the purpose of the `Intersection Observer` API.
 
 > what is robots.txt?
+* robots.txt is a text file that website owners use to communicate with web crawlers or robots (also known as spiders or bots) that index content for search engines. The purpose of robots.txt is to provide instructions to these crawlers regarding which parts of the site should be crawled or not crawled.
+```javascript
+// In this example, all web crawlers (*) are instructed to avoid crawling the /private/  directory but are allowed to crawl the /public/ directory.
+
+User-agent: *
+Disallow: /private/
+Allow: /public/
+
+```
 
 > what is PWAs?
+* A Progressive Web App (PWA) is a type of website that behaves like a mobile app. It's built using web technologies like HTML, CSS, and JavaScript.
+* PWAs use a technology called "service workers" to cache essential resources. This enables them to function even when there's no internet or a slow network.
 
 > what is CDN ? 
+
+> What is a Service Worker?
 

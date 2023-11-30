@@ -1049,14 +1049,70 @@ commonAncestor.addEventListener('click', function (event) {
 > How can you handle cross-browser compatibility issues?
 
 > How does the prototype chain work in JavaScript?
+* In JavaScript, the prototype chain is a mechanism that allows objects to inherit properties and methods from other objects through a prototype linkage. Every object in JavaScript has a prototype, which is either null or another object. When you access a property or method on an object, and the object itself does not have that property or method, JavaScript looks for it in the object's prototype, and if not found, it continues to search up the prototype chain until it reaches an object with a null prototype.
 
-> Describe the differences between REST and GraphQL.
+* Object Creation:
+ 
+  * When you create an object using either object literals ({}) or the new keyword with a constructor function, the object gets an internal link to its prototype. This link is established through the `__proto__` property.
+  ```javascript
+  const obj = {}; // obj.__proto__ points to Object.prototype
+  ```
+
+* Prototypes:
+
+  * Every object, including functions and arrays, has a prototype. Functions have a prototype property that is used when creating instances with the new keyword.
+  ```javascript
+  function Person(name) {
+  this.name = name;
+  }
+
+  const person = new Person('John');
+  // person.__proto__ points to Person.prototype
+  ``` 
+
+* Accessing Properties:
+
+  * When you try to access a property or method on an object, JavaScript first looks for it on the object itself.
+  * If the property or method is not found, JavaScript looks for it in the object's prototype `__proto__`.
+  * This process continues up the prototype chain until the property or method is found or until the chain ends (i.e., the prototype is null).
+  ```javascript
+  console.log(person.name); // Found on the object itself
+  console.log(person.toString()); // Found on Object.prototype (inherited via the prototype chain)
+  ```
+
+* Changing Prototypes:
+  
+  * You can dynamically change the prototype of an object using the Object.setPrototypeOf() method or by directly manipulating the `__proto__` property (though this is less recommended).
+  ```javascript
+  const animal = { eats: true };
+  const dog = { barks: true };
+
+  Object.setPrototypeOf(dog, animal); // dog.__proto__ points to animal
+  console.log(dog.eats); // true
+  ``` 
+
 
 > How can you optimize images for the web?
+* Compress Images: Use image compression tools to reduce file sizes without compromising too much on quality. Online tools like TinyPNG, JPEG-Optimizer, or ImageOptim can be helpful.
+* Resize Images:Resize images to the dimensions required on your website. Don't use larger images if smaller ones will suffice.
+* Use Image Sprites:Combine small images/icons into a single sprite sheet. This reduces the number of server requests, improving loading times.
+Use CSS to display specific parts of the sprite sheet where needed.
+* Enable Browser Caching:Configure your server to cache images in users' browsers. This way, once an image is loaded, it can be reused from the cache on subsequent visits.
+* Optimize Image Delivery:Use a Content Delivery Network (CDN) to serve images from servers geographically closer to the user, reducing latency.
+Utilize lazy loading for images below the fold, ensuring that they only load as the user scrolls down the page.
+* Specify Image Dimensions:Always specify the width and height attributes in the HTML for your images. This helps browsers allocate space for the images during page loading, preventing layout shifts.
+* Optimize Image Loading Order:Prioritize loading of critical images first. Use techniques like asynchronous loading to ensure that important content is displayed quickly.
+* Use WebP Format (if supported):WebP is a modern image format that provides good compression without sacrificing quality. Check if your target audience's browsers support WebP.
 
->  Explain the purpose of the `defer` attribute in script tags.
+> Explain the purpose of the `defer` attribute in script tags.
 
 > Describe the differences between CSS Grid and Flexbox.
 
 > Explain the purpose of the `Intersection Observer` API.
+
+> what is robots.txt?
+
+> what is PWAs?
+
+> what is CDN ? 
 

@@ -486,7 +486,7 @@ Excessive use of microtasks may delay the execution of macrotasks, potentially a
 * JS is single threaded. It has only one call stack.
 * Execution of code in javascript is always line by line.
 * Code in javascript is executed by JS Engine which uses the call stack to determine the order of execution.
-![event loop](images/event-loop.png)
+![event loop](static/images/event-loop.png)
 * [event loop explaination url](https://www.scaler.com/topics/javascript/event-loop-in-javascript/)
 
 > Js engine insides ?
@@ -1152,4 +1152,64 @@ Allow: /public/
 > what is CDN ? 
 
 > What is a Service Worker?
+
+> diff between undefined and  null ?
+* Undefined:
+   
+    * When a variable is declared but not assigned a value, it is said to be "undefined."
+    * It is also the default value of function parameters that are not provided.
+    * Accessing an object property or array element that does not exist will result in an undefined value.
+
+* Null:
+    
+    * Null is a special value in programming that represents the intentional absence of any object value or no value at all.
+    * It is often used as a placeholder to indicate that a variable, object, or property has no assigned value.
+    * It is a value that must be assigned explicitly.
+
+> XSS, CSRF protection ?
+* XSS (Cross-Site Scripting): XSS is a type of security vulnerability where an attacker injects malicious scripts into web pages that are then viewed by other users. These scripts can be used to steal sensitive information, manipulate page content, or perform other malicious actions on behalf of the user.
+    
+* Protection Measures:    
+
+    * Input Validation and Sanitization:
+         
+       * Validate and sanitize user input on both client and server sides.
+       * Use libraries/frameworks that automatically escape or sanitize user input.
+
+    * Content Security Policy (CSP):
+
+       * Implement Content Security Policy headers to control which resources are allowed to be loaded.   
+       * Specify trusted sources for scripts, styles, and other resources.
+
+    * HTTP Only Cookies:
+
+       * Mark sensitive cookies as "HttpOnly" to prevent them from being accessed by JavaScript.
+
+    * Escape Output:
+
+       * Escape user-generated content before rendering it on the page.
+       * Use appropriate encoding functions (e.g., HTML escaping) when outputting data.
+
+    * Use Security Headers:
+
+       * Utilize security headers like X-Content-Type-Options, X-Frame-Options, and Strict-Transport-Security.
+
+* CSRF (Cross-Site Request Forgery):
+* Imagine you have a magical button on a website that does something important when you click it. CSRF happens when someone tricks you into clicking that button without you knowing, perhaps by making you click a button on a different website that secretly activates the magical button.
+
+* Protection Measures:
+
+   * Hidden Tokens:
+
+      * Hide a special token (like a secret code) in the button. The website checks this code when you click the button.
+      * Validate these tokens on the server-side before processing requests.
+        
+   * Cookie Rules:
+
+      * Put rules on cookies (little pieces of data stored in your browser) so that they only work on the website where they came from.
+
+   * Custom Headers:
+
+      * Include special information when clicking buttons that bad websites can't easily copy.   
+
 

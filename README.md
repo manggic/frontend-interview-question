@@ -351,6 +351,7 @@ explaination -
 * Whenever there is a function declaration in the code, a separate local execution context gets created having its own phases and is pushed into the call stack.
 * Once the function ends, the EC is removed from the call stack.
 * When the program ends, even the global EC is pulled out of the call stack.
+![execution context](static/images/execution-context.png)
 
 > Define window object ?
 * window object is created by the JS engines of the respective browsers when global execution context is created.

@@ -243,6 +243,21 @@ export default function App() {
 * Currying is a functional programming concept that involves transforming a function with multiple arguments into a sequence of functions, each taking a single argument. The process of currying allows for the partial application of arguments, where a new function is created by providing some of the arguments to the original function. This results in more modular and composable functions, enhancing code flexibility and reusability.
 
 
+
+```javascript
+function sum(a){
+    return function(b){
+        return function(c){
+           return function(d){
+              return a+b+c+d
+           }
+        } 
+    }
+}
+
+console.log('currying', sum(5)(5)(5)(5))
+```
+
 * Imagine you have a list of products, and you want to filter them based on various criteria such as category, price range, and availability.
 
 ```javascript

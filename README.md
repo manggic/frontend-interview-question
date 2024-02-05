@@ -1229,3 +1229,19 @@ Allow: /public/
       * Include special information when clicking buttons that bad websites can't easily copy.   
 
 
+
+> how js code is converted into machine code?
+
+* Tokenization : Break the code into small units called tokens, like keywords and variables. 
+
+* AST (Abstract Syntax Tree) : Build a tree structure that represents the code's syntax and relationships between elements.
+
+* Bytecode Generation : Convert the tree into a simpler, platform-independent code called bytecode.
+
+* Optimizations: Make the bytecode faster by applying various performance-improving techniques, like simplifying calculations or removing unnecessary steps.
+
+* Just-In-Time Compilation (JIT): Translate the optimized bytecode into machine code right before the code runs. This step helps adapt the code for better performance.
+
+* Machine Code Execution: Finally, the machine code is executed directly by the computer's processor, making your JavaScript code run efficiently on the user's device.
+
+![v8 engine](/static/images/v8-engine.jpeg)

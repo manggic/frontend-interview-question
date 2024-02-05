@@ -503,6 +503,7 @@ Excessive use of microtasks may delay the execution of macrotasks, potentially a
 * Execution of code in javascript is always line by line.
 * Code in javascript is executed by JS Engine which uses the call stack to determine the order of execution.
 ![event loop](static/images/event-loop.png)
+![chrome run time](static/images/chrome-js-runtime.png)
 * [event loop explaination url](https://www.scaler.com/topics/javascript/event-loop-in-javascript/)
 
 > Js engine insides ?

@@ -1246,3 +1246,156 @@ Allow: /public/
 * Machine Code Execution: Finally, the machine code is executed directly by the computer's processor, making your JavaScript code run efficiently on the user's device.
 
 ![v8 engine](/static/images/v8-engine.jpeg)
+
+> module wrapper in nodejs (commonJs)
+
+![module default params](/static/images/module-wrapper.png)
+
+> Ways to export (Common Js) module 
+
+```js
+// exports (sum.js)
+const sum = (a, b) => {
+  return a + b;
+}
+module.exports = sum
+
+
+// import (index.js)
+const suming = require('./sum')
+console.log(suming(5,5))
+```
+
+
+```js 
+// exports
+module.exports = (a, b) => {
+  return a + b;
+};
+```
+
+
+```js
+// export
+const add = (a, b) => {
+  return a + b;
+};
+
+const sub = (a, b) => {
+  return a - b;
+}
+module.exports = { add, sub }
+
+
+// imports
+const summing = require('./sum')
+console.log(summing.add(5,5));
+console.log(summing.sub(5,5));
+```
+
+
+```js
+// export
+module.exports.add = (a, b) => {
+  return a + b;
+};
+
+module.exports.sub = (a, b) => {
+  return a - b;
+}
+
+
+// import 
+const summing = require('./sum')
+console.log(summing.add(5,5));
+console.log(summing.sub(5,5));
+```
+
+> exports VS module.exports
+
+* module.exports : When you assign a value directly to module.exports, you are replacing the entire exports object with a new object. This means that only what you assign to module.exports will be exported.
+
+```js
+// In a module file
+module.exports = {
+    myFunction: function() {
+        console.log("Hello!");
+    }
+};
+
+```
+
+* exports: exports is a shorthand for module.exports, but you cannot directly assign a new value to it. If you try to assign a new value to exports, it will break the reference to module.exports and no longer work as expected.
+You can use exports to add properties or methods to the exported object
+
+```js
+// In a module file
+exports.myFunction = function() {
+    console.log("Hello!");
+};
+```
+
+> Ways to export (ES module)
+
+```js
+// exports
+const sum = (a, b) => {
+  return a + b;
+};
+export default sum;
+
+// imports
+import sum from "./sum.mjs";
+console.log(sum(2, 2));
+```
+
+```js
+// exports
+export default (a, b) => {
+  return a + b;
+};
+
+// import 
+import sum from "./sum.mjs";
+console.log(sum(2, 2));
+```
+
+
+```js
+// exports
+const add = (a, b) => {
+  return a + b;
+};
+
+const sub = (m, n) => {
+  return m - n;
+};
+
+export default {
+  add,
+  sub,
+};
+
+
+// imports
+import math from "./sum.mjs";
+console.log(math.add(2, 2));
+console.log(math.sub(2, 2));
+```
+
+
+```js
+// named exports
+export const add = (a, b) => {
+  return a + b;
+};
+
+export const sub = (m, n) => {
+  return m - n;
+};
+
+// import
+import {add, sub} from "./sum.mjs";
+console.log(add(2, 2));
+console.log(sub(2, 2));
+```

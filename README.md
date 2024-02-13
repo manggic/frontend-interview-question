@@ -1399,3 +1399,29 @@ import {add, sub} from "./sum.mjs";
 console.log(add(2, 2));
 console.log(sub(2, 2));
 ```
+
+> watch mode in node (18+ version)
+
+* node --watch index.mjs
+
+> path module
+
+```js
+const path = require('path')
+console.log(__filename);
+console.log(__dirname);
+
+console.log(path.basename(__filename));
+console.log(path.basename(__dirname));
+
+console.log(path.extname(__filename));
+
+console.log(path.parse(__filename));
+
+
+console.log(path.isAbsolute(__filename));
+console.log(path.isAbsolute('./sum'));
+
+
+console.log(path.join(__dirname, 'sum.js'));
+```

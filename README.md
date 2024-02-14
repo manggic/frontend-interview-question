@@ -1425,3 +1425,83 @@ console.log(path.isAbsolute('./sum'));
 
 console.log(path.join(__dirname, 'sum.js'));
 ```
+
+> events module
+
+* In Node.js, the events module provides an implementation of the EventEmitter class, which is a central part of Node.js's event-driven architecture. This module allows you to create objects (known as event emitters) that emit named events, and to register listeners that can respond to those events.
+
+```js
+// First, you need to require the events module
+const EventEmitter = require('events');
+
+// you can create an instance of the EventEmitter class
+const myEmitter = new EventEmitter();
+
+// You can register listeners for specific events using the on() method
+myEmitter.on('eventName', () => {
+    console.log('Event occurred!');
+});
+
+// You can also use once() to listen for an event only once
+myEmitter.once('onceEvent', () => {
+    console.log('This will only happen once');
+});
+
+// To emit an event, you use the emit() method:
+myEmitter.emit('eventName');
+
+// You can pass arguments to your event listeners by including them after the event name when emitting the event
+myEmitter.on('greet', (name) => {
+    console.log(`Hello, ${name}!`);
+});
+
+myEmitter.emit('greet', 'John');
+```
+
+> explain streams
+
+* stream a is sequence of data that is been moved from one place to another over time.
+for ex : stream of data over the internet being moved from one computer to another 
+
+* Process streams of data in chunks as they arrive instead of waiting for the entire data to be available before processing.
+for ex : watching a video on youtube
+
+```js
+const fs = require('fs')
+
+const readableStream = fs.createReadStream('./t1.txt',{
+  encoding:'utf-8',
+  highWaterMark: 2
+})
+
+const writeableStream = fs.createWriteStream('./t2.txt')
+
+readableStream.on('data', (chunk)=> {
+   console.log(chunk);
+   writeableStream.write(chunk)
+})
+```
+
+> Types of streams
+
+* Readable stream where data can be read
+* writeable stream to which we can write data
+* duplex stream that are both readable and writeable
+* transform stream that can modify or transform the data as it is written and read 
+
+> explain buffer 
+
+* Area where people wait is nothing but buffer
+* Nodejs cannot control the pace at which data arrives in the streams
+* It can only decide when is the right time to send the data for processing
+* if there is data already processed or too little data to process,
+node puts arriving data in a buffer 
+
+```js
+const buffer = new Buffer.from('hello')
+console.log(buffer);
+console.log(buffer.toJSON());
+```
+
+
+

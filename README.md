@@ -1482,6 +1482,23 @@ readableStream.on('data', (chunk)=> {
 })
 ```
 
+```js
+// In Node.js, the pipe() method is used to connect the output of one stream to the input of another stream. This is a powerful feature that allows you to easily transfer data between different streams without manually managing the flow of data.
+const fs = require('fs')
+
+const readableStream = fs.createReadStream('./t1.txt',{
+  encoding:'utf-8',
+  highWaterMark: 2
+})
+
+const writeableStream = fs.createWriteStream('./t2.txt')
+
+
+readableStream.pipe(writeableStream)
+
+```
+
+
 > Types of streams
 
 * Readable stream where data can be read
@@ -1503,5 +1520,19 @@ console.log(buffer);
 console.log(buffer.toJSON());
 ```
 
+> libuv
 
+* libuv is a cross platform open source library written in c
+* It handles asynchronous non-blocking operations in nodejs
 
+* thread pool
+  - literally a pool of threads that nodeJs uses to offload time consuming task and ensure the main thread is not blocked for a long time.
+  - Every methods in nodeJs that has "sync" suffix always run on the main thread and is blocking
+  - A few async methods like fs.readFile and crypt.pbkdf2 run on a separate thread in libuv thread pool. They do run synchronously on their own thread but as far as main thread is concerned, it appears as if the method is running asynchronously 
+  - By default, libuv uses a thread pool with 4 threads, but this number can be changed by setting the UV_THREADPOOL_SIZE environment variable.
+  - if you increase the thread beyond the cpu core your machine has, the average time taken per method execution also increases  
+  - Although both crypto.pbkdf2 and https.request are asynchronous, https.request method does not seem to use thread pool
+  - https.request does not seem to be affected by the number of cpu cores either
+  - https.request is a network input/output operation and not a CPU bound operation, libuv instead delegates the work to the operating system kernel and whenever possible, it will pool the kernel and see if the request has completed successfully.
+  
+* Event loop

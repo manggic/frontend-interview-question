@@ -1536,3 +1536,29 @@ console.log(buffer.toJSON());
   - https.request is a network input/output operation and not a CPU bound operation, libuv instead delegates the work to the operating system kernel and whenever possible, it will pool the kernel and see if the request has completed successfully.
   
 * Event loop
+  - It is C program and is part of libuv
+  - A design pattern that co-ordinates the execution of synchronous and asynchronous code in nodejs
+  - These 4 are parts of libuv 
+    - timer queue ( setTimeout, setInterval ) 
+    - I/O queue ( fs, http )
+    - check queue ( setImmediate )
+    - close queue ( close handler )
+  - Microtask queue
+    - nextTick queue
+    - promise queue
+
+  - Execution order
+    - user written synchronous js code take priority over async code that the runtime would like to execute   
+    - only after the call stack is empty, event loop comes into picture 
+    - ![execution order](static/images/eventLoop-execution.png)  
+    - Any callback in micro-task queues are executed. First, tasks in the nextTick queue and only then tasks in the promise queue
+    - all callback within timer queue are executed
+    - Callback in the micro-task queues if present are executed. Again,first tasks in the nextTick queue and only then tasks in the promise queue
+    - All callback within the I/O queue are executed
+    - Callback in the micro-task queues if present are executed. nextTick queue followed by promise queue
+    - All callbacks in the check queue are executed
+    - Callback in the micro-task queues if present are executed. Again,first tasks in the nextTick queue and only then tasks in the promise queue
+    - All callbacks in the check queue are executed
+    - for one final time in the same loop, the micro task queues are executed. nextTick queue followed by promise queue
+    - if there are more callbacks to be processed, the loop is kept alive for one more run and the same step are repeated
+    - on the other hand,if all callback are executed and there is no more code to be process, the event loop exits 

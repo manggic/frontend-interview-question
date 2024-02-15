@@ -1562,3 +1562,6 @@ console.log(buffer.toJSON());
     - for one final time in the same loop, the micro task queues are executed. nextTick queue followed by promise queue
     - if there are more callbacks to be processed, the loop is kept alive for one more run and the same step are repeated
     - on the other hand,if all callback are executed and there is no more code to be process, the event loop exits 
+    - callbacks in microtask queue are executed in between the execution of callback in the timer queue.  
+    - when running setTimeout with delay 0ms and an I/O async method, the order of execution can never be guaranteed 
+    - I/O events are polled and callback functions are added to the I/O queue only after the I/O is completed.

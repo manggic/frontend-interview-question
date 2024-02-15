@@ -1565,3 +1565,5 @@ console.log(buffer.toJSON());
     - callbacks in microtask queue are executed in between the execution of callback in the timer queue.  
     - when running setTimeout with delay 0ms and an I/O async method, the order of execution can never be guaranteed 
     - I/O events are polled and callback functions are added to the I/O queue only after the I/O is completed.
+    - microtask queue callback are executed in between check queue callback. 
+    - when running setTimeout with delay 0ms and setImmediate method, the order of execution can never be guaranteed 

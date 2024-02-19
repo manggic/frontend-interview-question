@@ -1567,3 +1567,44 @@ console.log(buffer.toJSON());
     - I/O events are polled and callback functions are added to the I/O queue only after the I/O is completed.
     - microtask queue callback are executed in between check queue callback. 
     - when running setTimeout with delay 0ms and setImmediate method, the order of execution can never be guaranteed 
+
+
+> code of a CPU intensive task (4 thread of libuv example)
+
+```
+const crypto = require("crypto");
+
+const start = Date.now();
+crypto.pbkdf2("secret", "salt", 100000, 64, "sha512", () => {
+  console.log("hello1", Date.now() - start, "ms");
+});
+
+crypto.pbkdf2("secret", "salt", 100000, 64, "sha512", () => {
+  console.log("hello2", Date.now() - start, "ms");
+});
+
+crypto.pbkdf2("secret", "salt", 100000, 64, "sha512", () => {
+  console.log("hello3", Date.now() - start, "ms");
+});
+
+crypto.pbkdf2("secret", "salt", 100000, 64, "sha512", () => {
+  console.log("hello4", Date.now() - start, "ms");
+});
+
+crypto.pbkdf2("secret", "salt", 100000, 64, "sha512", () => {
+  console.log("hello5", Date.now() - start, "ms");
+});
+```
+
+> cluster module
+
+* No matter how many cores u have, node only uses single core of your CPU. 
+* This is fine for I/O operations, but if code has long running and CPU intensive operations, your app might struggle from a performance point of view
+* The cluster module enable the creation of child processes (called workers) that run simultaneously
+* All created worker share the same server port  
+* master is only in charge of the workers
+* worker are in charge of handling, incoming request, reading file etc. 
+* each worker gets it own event loop, memory and V8 instance
+* we should only create as many workers as there are CPU cores on the machine the app is running.
+
+

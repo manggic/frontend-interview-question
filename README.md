@@ -1607,4 +1607,10 @@ crypto.pbkdf2("secret", "salt", 100000, 64, "sha512", () => {
 * each worker gets it own event loop, memory and V8 instance
 * we should only create as many workers as there are CPU cores on the machine the app is running.
 
+> kill a process
+```
+lsof -i :4000
+kill -9 <PID>
+```
+
 

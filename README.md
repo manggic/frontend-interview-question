@@ -87,8 +87,11 @@
 - What kind of http request are used
 - What is difference between put and patch 
 
-> <strong> Explain Higher Order Component ?</strong>
 
+
+<details>
+  <summary>Explain Higher Order Component ?</summary>
+ 
 *  A Higher Order Component (HOC) in React is a function that takes a component and returns a new component with enhanced features or behavior. 
 * They enable you to encapsulate and extend the functionality of components in a modular and reusable way.
 
@@ -197,9 +200,16 @@ export default App;
 ```
 
 
-> <strong> Custom Hook ?</strong>
+</details>
 
-```javascript
+
+
+
+
+<details>
+  <summary>Custom Hook ?</summary>
+
+  ```javascript
 import { useEffect, useState } from 'react';
 
 // Custom Hook: useLoading
@@ -234,14 +244,23 @@ export default function App() {
   );
 }
 ```
+</details>
 
-> <strong>Diff between HOC and custom hook ?</strong>
+
+
+<details>
+  <summary>Diff between HOC and custom hook ?</summary>
+
 * HOCs: Use HOCs when you need to wrap components with additional props or behavior, especially if you have a mix of class and functional components or if you need to compose multiple enhancements.
 * Custom Hooks: Use Custom Hooks when you want to extract and reuse stateful logic across multiple functional components. Custom Hooks are especially useful for managing side effects and complex logic.
 
-> <strong>Why do we need currying in JS ? Explain with example. </strong>
-* Currying is a functional programming concept that involves transforming a function with multiple arguments into a sequence of functions, each taking a single argument. The process of currying allows for the partial application of arguments, where a new function is created by providing some of the arguments to the original function. This results in more modular and composable functions, enhancing code flexibility and reusability.
+</details>
 
+
+<details>
+  <summary>Why do we need currying in JS ? Explain with example.</summary>
+ 
+* Currying is a functional programming concept that involves transforming a function with multiple arguments into a sequence of functions, each taking a single argument. The process of currying allows for the partial application of arguments, where a new function is created by providing some of the arguments to the original function. This results in more modular and composable functions, enhancing code flexibility and reusability.
 
 
 ```javascript
@@ -291,8 +310,11 @@ const filteredProducts = filterInStock(products);
 console.log(filteredProducts);
 
 ```
+</details>
 
-> Explain closure ?
+<details>
+  <summary>Explain closure ?</summary>
+
 * A closure in JavaScript is a combination of a function and the lexical environment within which that function was declared. This allows a function to access variables from its outer (enclosing) scope even after that scope has finished executing. In simpler terms, a closure is formed when a function is defined inside another function, and the inner function has access to the outer function's variables.
 
 
@@ -340,16 +362,36 @@ counter2(); // Output: 1
 
 ```
 
-> why we need closures ?
+</details>
+
+
+
+
+
+
+<details>
+  <summary>why we need closures ?</summary>
+
 * Data Encapsulation/Privacy: Closures allow you to create private variables or state within a function. The variables declared in the outer function are not accessible from outside, but the inner function has access to them. This helps in encapsulating data and preventing it from being accessed or modified unintentionally.
 * Maintaining State: Closures allow functions to "remember" the environment in which they were created. This is useful for maintaining state across multiple function calls without the need for global variables. Each closure maintains its own set of variables.
 
-> disadvantage of closure ?
+</details>
+
+
+<details>
+  <summary>disadvantage of closure ?</summary>
+
 * over consumption of memory
 * excessive or improperly used closures can impact performance.
 * This can lead to memory leaks if developers are not careful about cleaning up unused closures.
 
-> what is hoisting?
+</details>
+
+
+
+<details>
+  <summary>what is hoisting?</summary>
+
 * It is phenomena by which u can access variable and function even before u have initialzed it.
 However, it's important to note that only the declarations are hoisted, not the initializations
 
@@ -360,7 +402,12 @@ explaination -
 * Arrow functions enact as variables and get "undefined" during the memory creation phase while functions actually get run.
 
 
-> Execution context?
+</details>
+
+
+<details>
+  <summary>Execution context?</summary>
+
 * At first a global execution context is created, which consists of Memory and code and has 2 phases: Memory allocation phase and code execution phase.
 * In the first phase, the variables are assigned "undefined" while functions have their own code.
 * Whenever there is a function declaration in the code, a separate local execution context gets created having its own phases and is pushed into the call stack.
@@ -368,7 +415,13 @@ explaination -
 * When the program ends, even the global EC is pulled out of the call stack.
 ![execution context](static/images/execution-context.png)
 
-> Define window object ?
+</details>
+
+
+
+<details>
+  <summary>Define window object ?</summary>
+
 * window object is created by the JS engines of the respective browsers when global execution context is created.
 * whenever an execution context is created a "this" variable is also created.
 * At the global level "this" points to the global object( window object in case of browsers).
@@ -380,13 +433,24 @@ explaination -
 	-	console.log(a);
 	-	console.log(this.a)             //at the global space level, where this points to the window object
 
-> Difference between not-defined and undefined ?
+</details>
+
+
+
+<details>
+  <summary>Difference between not-defined and undefined ?</summary>
+
 * Undefined is a Special Placeholder which is used to reserve memory for the variables in the memory creation phase. Even before a single line of code is executed JS engine assigns undefined to the variables.
 * Not Defined means if we try to console or access any variable which is not declared in the code then we get Not Defined error.
 * JS is a loosely typed language or weakly typed language means it does not attaches its variables to specific data types like in C++ and java.
 * Remember undefined !== not defined.
 
-> Explain lexical env, Scope & Scope chain?
+</details>
+
+
+<details>
+  <summary>Explain lexical env, Scope & Scope chain?</summary>
+
 * Lexical environment = EC's Local Memory + Reference to Lexical Environment of its parent.
 * Lexical Environment of its parent is the scope where a function is physically present or defined. So, suppose a function x(), is defined and invoked in the GEC, when function x()'s EC is pushed in the call stack, it stores a reference to its parent's lexical environment i.e. the GEC's memory.
 * Whenever a new Execution Context is pushed in the Call Stack it holds a reference to the Lexical Environment of its parent, i.e. the EC's memory from where it was invoked.
@@ -395,7 +459,16 @@ explaination -
 * The mechanism mentioned above is called SCOPE CHAIN.
 * If the variable accessed is not found in the Scope Chain, then you will get the variable is not defined error in the  browser's console.
 
-> let and const? their hoisting? Temporary Dead zone?
+
+</details>
+
+
+
+
+
+<details>
+  <summary>let and const? their hoisting? Temporary Dead zone?</summary>
+
 * Scoping
    - var is function-scoped, meaning the variable is visible throughout the entire function where it is declared.
    - If a var is declared within a block (like an if statement or loop), it is still visible outside of that block.
@@ -422,8 +495,11 @@ it gives us referenceError.
 * There are three types of error: [1] referenceError {given where variable does not have memory allocation} [2] typeError {given when we change type that is not supposed to be changed} [3] syntaxError {when proper syntax(way of writing a statement) is not used}.
 * Use const wherever possible followed by let, Use var as little as possible(only if you have to). It helps avoid error.
 * Initialising variables at the top is good idea, helps shrinks TDZ to zero.
+</details>
 
-> Block scope & shadowing?
+<details>
+  <summary>Block scope & shadowing?</summary>
+ 
 * Code inside curly bracket is called block.
 * Multiple statements are grouped inside a block so it can be written where JS expects single statements like in if, else, loop, function etc.
 * Block values are stored inside separate memory than global. They are stored in block. (the reason let and const are called block scope)
@@ -454,15 +530,26 @@ let a = 200;
 ```
 * Providing same name to the variable as of those variable which are present in outer scope is called shadowing.
 
-> What is Function Expression ?
+</details>
+
+
+
+<details>
+  <summary>What is Function Expression ?</summary>
+ 
 * When we assign a function into a variable that is Function Expression. & We can not do Hoisting by this becz it acts like variable.
 ```javascript
 var a = function(){
            console.log("Function Expression");
       }
-```
+``` 
+</details>
 
-> Difference b/w Parameters and Arguments ?
+
+
+<details>
+  <summary>Difference b/w Parameters and Arguments ?</summary>
+
 * When we creating a function  & put some variabels in this ( ) that is our Parameters & When we call this function & pass a variable in this ( ) that is our Arguments
 
 ```javascript
@@ -471,14 +558,32 @@ function ab( param1, param2 ){} // param1 , param2 are parameters
 ab(4, 5) // 4 & 5 are arguments
 ```
 
-> What is First Class Function Or First class citizens?
+</details>
+
+
+
+<details>
+  <summary>What is First Class Function Or First class citizens?</summary>
+ 
 * They are called first class citizens or first class functions because they have the ability to be stored in the variables, passed as parameters and arguments. They can also be returned in the function.
 
-> what is callback function?
+</details>
+
+
+<details>
+  <summary>what is callback function?</summary>
+
 * Function that is passed on as argument to another function is called callback function.
 * setTimeout helps turn JS which is single threaded and synchronous into asynchronous.
 
-> Explain callback queue,call stack , micro-task queue, Starvation and Event Loop in details ?
+</details>
+
+
+
+
+<details>
+  <summary>Explain callback queue,call stack , micro-task queue, Starvation and Event Loop in details ?</summary>
+
 * Call Stack : The call stack is a data structure that keeps track of the execution context of the program.
 It stores function calls and executes them in a last-in, first-out (LIFO) manner.
 * Event loop : The event loop is a continuous process and a mechanism through which the ‘calls waiting for execution’ in the callback queue/job queue can be put on the call stack.
@@ -506,7 +611,12 @@ Excessive use of microtasks may delay the execution of macrotasks, potentially a
 ![chrome run time](static/images/chrome-js-runtime.png)
 * [event loop explaination url](https://www.scaler.com/topics/javascript/event-loop-in-javascript/)
 
-> Js engine insides ?
+</details>
+
+
+<details>
+  <summary>Js engine insides ?</summary>
+
 * Parser: The parser reads the source code and converts it into an Abstract Syntax Tree (AST). The AST represents the grammatical structure of the code.
 * Interpreter: The interpreter processes the AST generated by the parser and executes the code line by line. This is often referred to as "script interpretation."
 * Compiler: Some JavaScript engines use a Just-In-Time (JIT) compiler. Instead of interpreting the code directly, the engine first compiles it into machine code for faster execution. This process occurs at runtime.
@@ -521,17 +631,32 @@ Examples of JavaScript Engines:
 * JavaScriptCore (Used in Safari):
 * Chakra (Previously used in Microsoft Edge):
 
-> Expain trust issue with setTimeout ?
+</details>
+
+
+<details>
+  <summary>Expain trust issue with setTimeout ?</summary>
+
 * setTimeout of an ‘n’ seconds does not guarantee execution exactly when ‘n’ seconds have passed, rather it guarantees a minimum delay of ‘n’. This is because after a defined limit, the callback function moves to the callback queue (stating ready for execution) where the event loop is supposed to pick it for actual execution.
 * The setTimeout function is executed only after call stack is empty, even if setTimeout is set to 0ms. 
 * setTimeout ensures that minimum it will take the time mentioned because it may be paused due to call stack not empty.
+</details>
 
-> Higher order function ?
+
+<details>
+  <summary>Higher order function ?</summary>
+
 * A function which takes fn as an arguments or return a fn is called HOF
 * fn which is passed to the HOF is callback function
 * This is only possible because fn are first class citizens
 
-> what is 'this' keyword?
+</details>
+
+
+
+<details>
+  <summary>what is 'this' keyword?</summary>
+
 * In JavaScript, the this keyword is a special keyword that refers to the current instance of an object or the context in which a function is executed. The value of this depends on how a function is called or how an object is accessed.
 
 1. Global Context:
@@ -583,7 +708,12 @@ console.log(instance.property); // 'value'
 6. Arrow Functions:
 * Arrow functions do not have their own this context; instead, they inherit the 'this' value from the enclosing lexical scope.
 
-> Diff between regular function and arrow fn ?
+</details>
+
+
+<details>
+  <summary>Diff between regular function and arrow fn ?</summary>
+
 * 'this' Binding:
    
    - regular fn has it own this context, dynamically bound at runtime based on how the function is invoked.
@@ -622,8 +752,14 @@ const person1 = new Person('Alice');
 // Accessing the method from the prototype
 person1.sayHello(); // Output: Hello, my name is Alice
 ```   
+</details>
 
-> what is prototype in js?
+
+
+
+<details>
+  <summary>what is prototype in js?</summary>
+
 * Every function in JavaScript has a special property called prototype.
 * This prototype property is initially an empty object.
 * When you use a function as a constructor with the new keyword, the object created inherits properties and methods from the constructor's prototype.
@@ -650,12 +786,18 @@ car1.start(); // Output: Toyota Camry is starting.
 car2.start(); // Output: Honda Accord is starting.
 
 ```
+</details>
 
-> Template literals ?
+
+<details>
+  <summary>Template literals ?</summary>
+
 * Template literals are a feature in JavaScript that allows you to embed expressions inside string literals, making it easier to concatenate variables and create more readable and flexible strings. Template literals are created using backticks ( ) instead of single or double quotes.
+</details>
 
+<details>
+  <summary>what is Js bundler ?</summary>
 
-> what is Js bundler ?
 * A JavaScript bundler is a tool that combines and packages multiple JavaScript files (and potentially other assets like CSS, images, etc.) into a single, optimized file or a set of files.
 The main purpose of a bundler is to improve the performance and efficiency of web applications by reducing the number of HTTP requests and optimizing the delivery of code to the browser.
 
@@ -681,13 +823,29 @@ Popular JavaScript bundlers include:
 
 * Rollup: Known for its focus on creating smaller bundles and optimizing for ES6 module syntax.
 
-> what is babel ?
+</details>
+
+
+
+<details>
+  <summary>what is babel ?</summary>
+
 * Babel is a popular JavaScript compiler that allows developers to write code using the latest ECMAScript (ES) standards (such as ES6 or ES2015 and beyond) and then transform, or transpile, that code into an older version of JavaScript that is compatible with a broader range of browsers. This process is essential for ensuring that web applications can run on environments that may not support the latest JavaScript features.
 
-> what is hot module replacement ?
+</details>
+
+<details>
+  <summary>what is hot module replacement ?</summary>
+
 * Hot Module Replacement (HMR) is a feature in some JavaScript bundlers, build tools, and frameworks that allows developers to apply code updates and see the results in real-time, without requiring a full page reload.
 
-> Throttling and Debouncing ?
+</details>
+
+
+
+<details>
+  <summary>Throttling and Debouncing ?</summary>
+
 * Throttling and debouncing are techniques used in JavaScript to control the rate at which a particular function is executed, especially in scenarios where rapid or frequent execution can cause performance issues or unnecessary resource consumption.
 
 * Throttling: It ensure that their is a specified time interval between same function call.
@@ -780,8 +938,13 @@ const debouncedFunction = debounce(() => {
 window.addEventListener("resize", debouncedFunction);
 
 ```
-        
-> Explain call, apply and bind ?
+</details>
+
+
+
+<details>
+  <summary>Explain call, apply and bind ?</summary>
+
 * In JavaScript, call, apply, and bind are methods that allow you to set the value of this and pass arguments to a function in different ways.
 
 1. 'call' Method:
@@ -904,8 +1067,12 @@ const greetPerson = person.greet.bind(person);
 greetPerson(); // Output: Hello, Alice!
 
 ```
+</details>
 
-> Types of modules ?
+
+<details>
+  <summary>Types of modules ?</summary>
+
 * ECMAScript Modules (ESM):
 
    * Syntax:
@@ -962,11 +1129,23 @@ greetPerson(); // Output: Hello, Alice!
   * Synchronous Loading: CommonJS modules are loaded synchronously by default. Asynchronous loading can be achieved using callbacks.
 
 
-> How does CORS (Cross-Origin Resource Sharing) work?
+</details>
+
+
+
+<details>
+  <summary>How does CORS (Cross-Origin Resource Sharing) work?</summary>
+
 * Cross-Origin Resource Sharing (CORS) is a security feature implemented by web browsers that controls how web pages in one domain can request and interact with resources from another domain.
 * CORS is enforced by web browsers to prevent malicious websites from making unauthorized requests to a different domain.
 
-> How to fix CORS error ?
+</details>
+
+
+
+<details>
+  <summary>How to fix CORS error ?</summary>
+
 * To fix CORS (Cross-Origin Resource Sharing) errors, you generally need to make changes on the server that is providing the resource. 
 * The server needs to include the Access-Control-Allow-Origin header in its responses. This header specifies which origins are allowed to access the resource.
 ```http
@@ -984,8 +1163,12 @@ Access-Control-Allow-Credentials: true
 ``` 
 * There may be middleware available to handle CORS. For example, in Node.js with Express, you can use the library cors
 
+</details>
 
-> How does the event delegation pattern work?
+
+<details>
+  <summary>How does the event delegation pattern work?</summary>
+
 * Event delegation is a programming pattern in which a single event listener is attached to a common ancestor of multiple elements, rather than attaching individual event listeners to each element. This pattern leverages the concept of event bubbling in the Document Object Model (DOM) to handle events more efficiently.
 
 ```javascript
@@ -1000,16 +1183,25 @@ commonAncestor.addEventListener('click', function (event) {
   }
 });
 ```
+</details>
+  
 
-> How can you optimize website performance?
 
-> What is the role of the `use strict` directive?
+
+<details>
+  <summary>What is the role of the `use strict` directive?</summary>
+
 * The "use strict"; directive is used in JavaScript to enable a stricter set of parsing and error handling rules. When this directive is present at the beginning of a script or a function, it enforces a more rigid interpretation of the code, helping to catch common programming errors and prevent the use of certain error-prone features.
 * Variables must be declared with var, let, or const before they are used.
 * Assigning a value to an undeclared variable, deleting variables, or assigning values to read-only properties will result in errors.
+</details>
 
 
-> Differentiate between shallow and deep copying objects.
+
+
+<details>
+  <summary>Differentiate between shallow and deep copying objects.</summary>
+
 * Shallow Copy:
 
     * A shallow copy creates a new object and copies the values of the properties of the original object to the new object.
@@ -1063,9 +1255,14 @@ commonAncestor.addEventListener('click', function (event) {
     console.log("Deep Copy with Lodash:", deepCopyWithLodash);
     ```
 
-> How can you handle cross-browser compatibility issues?
+</details>
 
-> How does the prototype chain work in JavaScript?
+
+
+<details>
+  <summary>How does the prototype chain work in JavaScript?</summary>
+
+
 * In JavaScript, the prototype chain is a mechanism that allows objects to inherit properties and methods from other objects through a prototype linkage. Every object in JavaScript has a prototype, which is either null or another object. When you access a property or method on an object, and the object itself does not have that property or method, JavaScript looks for it in the object's prototype, and if not found, it continues to search up the prototype chain until it reaches an object with a null prototype.
 
 * Object Creation:
@@ -1108,8 +1305,12 @@ commonAncestor.addEventListener('click', function (event) {
   console.log(dog.eats); // true
   ``` 
 
+</details>
 
-> How can you optimize images for the web?
+
+<details>
+  <summary>How can you optimize images for the web?</summary>
+
 * Compress Images: Use image compression tools to reduce file sizes without compromising too much on quality. Online tools like TinyPNG, JPEG-Optimizer, or ImageOptim can be helpful.
 * Resize Images:Resize images to the dimensions required on your website. Don't use larger images if smaller ones will suffice.
 * Use Image Sprites:Combine small images/icons into a single sprite sheet. This reduces the number of server requests, improving loading times.
@@ -1120,8 +1321,14 @@ Utilize lazy loading for images below the fold, ensuring that they only load as 
 * Specify Image Dimensions:Always specify the width and height attributes in the HTML for your images. This helps browsers allocate space for the images during page loading, preventing layout shifts.
 * Optimize Image Loading Order:Prioritize loading of critical images first. Use techniques like asynchronous loading to ensure that important content is displayed quickly.
 * Use WebP Format (if supported):WebP is a modern image format that provides good compression without sacrificing quality. Check if your target audience's browsers support WebP.
+</details>
 
-> Explain the purpose of the `defer` attribute in script tags.
+
+
+
+<details>
+  <summary>Explain the purpose of the `defer` attribute in script tags.</summary>
+
 * The defer attribute in script tags is used to indicate that the script should be executed after the HTML document has been fully parsed. When a browser encounters a script tag with the defer attribute, it will continue to parse the HTML document while the script is being downloaded in the background
 * JS with defer in `<head>`:
  
@@ -1146,12 +1353,15 @@ Utilize lazy loading for images below the fold, ensuring that they only load as 
    ```
 
 * In essence, defer in `<head>` is about control and order, while just before `</body>` is about speed and non-blocking.
+</details>
 
-> Describe the differences between CSS Grid and Flexbox.
 
-> Explain the purpose of the `Intersection Observer` API.
 
-> what is robots.txt?
+
+
+<details>
+  <summary>what is robots.txt?</summary>
+
 * robots.txt is a text file that website owners use to communicate with web crawlers or robots (also known as spiders or bots) that index content for search engines. The purpose of robots.txt is to provide instructions to these crawlers regarding which parts of the site should be crawled or not crawled.
 ```javascript
 // In this example, all web crawlers (*) are instructed to avoid crawling the /private/  directory but are allowed to crawl the /public/ directory.
@@ -1161,16 +1371,15 @@ Disallow: /private/
 Allow: /public/
 
 ```
+</details>
 
-> what is PWAs?
-* A Progressive Web App (PWA) is a type of website that behaves like a mobile app. It's built using web technologies like HTML, CSS, and JavaScript.
-* PWAs use a technology called "service workers" to cache essential resources. This enables them to function even when there's no internet or a slow network.
 
-> what is CDN ? 
 
-> What is a Service Worker?
 
-> diff between undefined and  null ?
+
+<details>
+  <summary>diff between undefined and  null ?</summary>
+
 * Undefined:
    
     * When a variable is declared but not assigned a value, it is said to be "undefined."
@@ -1183,7 +1392,13 @@ Allow: /public/
     * It is often used as a placeholder to indicate that a variable, object, or property has no assigned value.
     * It is a value that must be assigned explicitly.
 
-> XSS, CSRF protection ?
+</details>
+
+
+
+<details>
+  <summary>XSS, CSRF protection ?</summary>
+
 * XSS (Cross-Site Scripting): XSS is a type of security vulnerability where an attacker injects malicious scripts into web pages that are then viewed by other users. These scripts can be used to steal sensitive information, manipulate page content, or perform other malicious actions on behalf of the user.
     
 * Protection Measures:    
@@ -1229,9 +1444,14 @@ Allow: /public/
 
       * Include special information when clicking buttons that bad websites can't easily copy.   
 
+</details>
 
 
-> how js code is converted into machine code?
+
+
+<details>
+  <summary>how js code is converted into machine code?</summary>
+
 
 * Tokenization : Break the code into small units called tokens, like keywords and variables. 
 
@@ -1246,12 +1466,22 @@ Allow: /public/
 * Machine Code Execution: Finally, the machine code is executed directly by the computer's processor, making your JavaScript code run efficiently on the user's device.
 
 ![v8 engine](/static/images/v8-engine.jpeg)
+</details>
 
-> module wrapper in nodejs (commonJs)
+
+
+
+<details>
+  <summary>module wrapper in nodejs (commonJs)</summary>
 
 ![module default params](/static/images/module-wrapper.png)
+</details>
 
-> Ways to export (Common Js) module 
+
+
+<details>
+  <summary>Ways to export (Common Js) module </summary>
+
 
 ```js
 // exports (sum.js)
@@ -1310,8 +1540,17 @@ const summing = require('./sum')
 console.log(summing.add(5,5));
 console.log(summing.sub(5,5));
 ```
+</details>
 
-> exports VS module.exports
+
+
+
+
+
+
+
+<details>
+  <summary>exports VS module.exports</summary>
 
 * module.exports : When you assign a value directly to module.exports, you are replacing the entire exports object with a new object. This means that only what you assign to module.exports will be exported.
 
@@ -1334,8 +1573,17 @@ exports.myFunction = function() {
     console.log("Hello!");
 };
 ```
+</details>
 
-> Ways to export (ES module)
+
+
+
+
+
+
+<details>
+  <summary>Ways to export (ES module)</summary>
+
 
 ```js
 // exports
@@ -1399,12 +1647,19 @@ import {add, sub} from "./sum.mjs";
 console.log(add(2, 2));
 console.log(sub(2, 2));
 ```
+</details>
 
-> watch mode in node (18+ version)
+
+
+<details>
+<summary>watch mode in node (18+ version)</summary>
 
 * node --watch index.mjs
+</details>
 
-> path module
+
+<details>
+<summary>path module</summary>
 
 ```js
 const path = require('path')
@@ -1425,8 +1680,13 @@ console.log(path.isAbsolute('./sum'));
 
 console.log(path.join(__dirname, 'sum.js'));
 ```
+</details>
 
-> events module
+
+
+
+<details>
+<summary>events module</summary>
 
 * In Node.js, the events module provides an implementation of the EventEmitter class, which is a central part of Node.js's event-driven architecture. This module allows you to create objects (known as event emitters) that emit named events, and to register listeners that can respond to those events.
 
@@ -1457,8 +1717,13 @@ myEmitter.on('greet', (name) => {
 
 myEmitter.emit('greet', 'John');
 ```
+</details>
 
-> explain streams
+
+
+<details>
+<summary>explain streams</summary>
+
 
 * stream a is sequence of data that is been moved from one place to another over time.
 for ex : stream of data over the internet being moved from one computer to another 
@@ -1497,16 +1762,24 @@ const writeableStream = fs.createWriteStream('./t2.txt')
 readableStream.pipe(writeableStream)
 
 ```
+</details>
 
 
-> Types of streams
 
+
+<details>
+  <summary>Types of streams</summary>
+ 
 * Readable stream where data can be read
 * writeable stream to which we can write data
 * duplex stream that are both readable and writeable
 * transform stream that can modify or transform the data as it is written and read 
 
-> explain buffer 
+</details>
+
+
+<details>
+  <summary>explain buffer</summary>
 
 * Area where people wait is nothing but buffer
 * Nodejs cannot control the pace at which data arrives in the streams
@@ -1519,13 +1792,18 @@ const buffer = new Buffer.from('hello')
 console.log(buffer);
 console.log(buffer.toJSON());
 ```
+</details>
 
-> libuv
+
+<details>
+<summary>libuv</summary>
 
 * libuv is a cross platform open source library written in c
 * It handles asynchronous non-blocking operations in nodejs
 
-* thread pool
+<details>
+<summary>thread pool</summary>
+
   - literally a pool of threads that nodeJs uses to offload time consuming task and ensure the main thread is not blocked for a long time.
   - Every methods in nodeJs that has "sync" suffix always run on the main thread and is blocking
   - A few async methods like fs.readFile and crypt.pbkdf2 run on a separate thread in libuv thread pool. They do run synchronously on their own thread but as far as main thread is concerned, it appears as if the method is running asynchronously 
@@ -1535,8 +1813,12 @@ console.log(buffer.toJSON());
   - https.request does not seem to be affected by the number of cpu cores either
   - https.request is a network input/output operation and not a CPU bound operation, libuv instead delegates the work to the operating system kernel and whenever possible, it will pool the kernel and see if the request has completed successfully.
   
-* Event loop
-  - It is C program and is part of libuv
+</details>
+
+<details>
+  <summary><i>Event loop</i></summary>
+  
+    - It is C program and is part of libuv
   - A design pattern that co-ordinates the execution of synchronous and asynchronous code in nodejs
   - These 4 are parts of libuv 
     - timer queue ( setTimeout, setInterval ) 
@@ -1567,9 +1849,13 @@ console.log(buffer.toJSON());
     - I/O events are polled and callback functions are added to the I/O queue only after the I/O is completed.
     - microtask queue callback are executed in between check queue callback. 
     - when running setTimeout with delay 0ms and setImmediate method, the order of execution can never be guaranteed 
+</details>
+
+</details>
 
 
-> code of a CPU intensive task (4 thread of libuv example)
+<details close>
+<summary>code of a CPU intensive task (4 thread of libuv example)</summary>
 
 ```
 const crypto = require("crypto");
@@ -1595,8 +1881,11 @@ crypto.pbkdf2("secret", "salt", 100000, 64, "sha512", () => {
   console.log("hello5", Date.now() - start, "ms");
 });
 ```
+</details>
 
-> cluster module
+
+<details close>
+<summary>  cluster module</summary>
 
 * No matter how many cores u have, node only uses single core of your CPU. 
 * This is fine for I/O operations, but if code has long running and CPU intensive operations, your app might struggle from a performance point of view
@@ -1607,10 +1896,17 @@ crypto.pbkdf2("secret", "salt", 100000, 64, "sha512", () => {
 * each worker gets it own event loop, memory and V8 instance
 * we should only create as many workers as there are CPU cores on the machine the app is running.
 
-> kill a process
+</details>
+
+
+<details close>
+<summary>kill a process</summary>
+
 ```
 lsof -i :4000
 kill -9 <PID>
 ```
+</details>
+
 
 

@@ -1908,5 +1908,27 @@ kill -9 <PID>
 ```
 </details>
 
+<details close>
+<summary>What is prototype chaning ?</summary>
 
+```js
+const obj1 = {
+  sayHello() {
+    console.log("hello");
+  },
+};
+
+const obj2 = {
+  getToday() {
+    console.log("17 april");
+  },
+};
+
+Object.setPrototypeOf(obj2, obj1); // obj2.__proto__ = obj1
+
+// it will check sayHello first in obj2 and then will check into its prototypes and it will keep on checking if it does not found else will reach null and stop
+obj2.sayHello();
+
+```
+</details>
 
